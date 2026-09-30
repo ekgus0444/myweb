@@ -1,39 +1,130 @@
-body{
-    margin: 0;
+* {   
+	border: 1px solid skyblue;    
+	margin: 0;                
+	padding: 0;               
+	box-sizing: border-box;    
 }
+li {  
+	list-style-type: none;     
+} 
 
-.container {
-    width: 100%;
-    height: 70px;
+header {   
+	height: 166px;              
+
+} 
+
+.box {   
+	width: 1100px;              
+	margin: 0 auto;             
+
+} 
+
+
+
+
+#logo { 
+	float: center;               
+	margin: 80px 0 0 60px;      
+
+} 
+
+#menu { 
+	float: right;              
+	text-align: right;           
+	margin-right: 20px;          
+ 
+} 
+
+#menu li { 
+	display: inline-block;      
+
+} 
+
+
+
+#main_menu li { 
     display: flex;
+    justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
-    padding: 0 28px;
-}
+	margin: 20px 20px 20px 20px;      
+	font-family: "맑은고딕";     
+	font-weight: bold;           
+	font-size: 20px;             
+		 
+} 
 
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #0075c8;
-    margin-right: 20px;
-    white-space: nowrap;
-}
 
-.Login,
-.Login2 {
-    padding: 8px 12px;
-    margin-right: 5px;
-    white-space: nowrap;
+
+
+#main_image { 
+	height: 312px;              
+	background-image: url(""); 
+	background-repeat: no-repeat;           
+	background-position: top center;        
+	text-align: center;                     
+	padding: 230px 0 0 750px;               
+} 
+
+
+
+
+
+
+#main { 
+	width: 840px;             
+	display: flex;
+	margin: 70px auto;        
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px 0;
+} 
+
+
+
+
+#main2 { 
+	width: 400px;            
     
-}
+	float: none;
+    
+                    
+} 
 
-.item {
-    padding: 15px 12px;
-    text-align: center;
-    white-space: nowrap;
-}
-.main {
-    width: 100%;
-    height: 520px;
-    background-color: #b9d9f5;
-}
+#main2 .title1 { 
+    
+	padding-bottom: 8px;          
+	border-bottom: solid 1px black;
+} 
+
+#main2 .item1 { 
+	clear: both;                  
+	width: 189px;                 
+	float: left;                  
+	margin-top: 30px;             
+    margin-bottom: 30px;
+} 
+
+#main2 .item2 { 
+	width: 189px;                 
+	float: right;                 
+	margin-top: 30px;             
+} 
+
+#main2 .subject { 
+	margin-top: 10px;             
+	font-weight: bold;            
+	font-size: 16px;              
+} 
+
+#main2 .date { 
+	margin-top: 5px;              
+} 
+
+
+
+footer { 
+	clear: both;                  /* 위에서 사용한 float 영향을 없앰 → 푸터가 밑으로 내려감 */
+	height: 260px;                /* 푸터 높이 260px */
+	background-color: #05354e;    /* 푸터 배경색을 진한 남색으로 */
+	color: white;                 /* 푸터 글자색을 흰색으로 */
+} 
