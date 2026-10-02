@@ -1,0 +1,1924 @@
+/* ==================================================
+   공통
+================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+    font-family:
+        "Pretendard",
+        "Noto Sans KR",
+        "맑은 고딕",
+        sans-serif;
+
+    color: #292929;
+}
+
+
+
+/* ==================================================
+   표지
+================================================== */
+
+.cover-page {
+    background: #f4f1eb;
+}
+
+
+.cover {
+    width: 100%;
+    height: 100vh;
+
+    min-height: 600px;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.10),
+            rgba(255,255,255,0)
+        ),
+        url("images/cover.png");
+
+    background-size: cover;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+}
+
+
+
+/* 표지 글 */
+
+.cover-text {
+    width: 100%;
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: clamp(40px, 6vh, 75px);
+
+    padding: 20px;
+
+    animation:
+        coverFade
+        1.2s
+        ease;
+}
+
+
+
+/* 영어 제목 */
+
+.english-title {
+    display: block;
+
+    font-size:
+        clamp(10px, 1vw, 14px);
+
+    font-weight: 600;
+
+    letter-spacing:
+        clamp(3px, 0.5vw, 7px);
+
+    color: #72583f;
+}
+
+
+
+/* 메인 제목 */
+
+.cover-text h1 {
+    margin:
+        12px
+        0
+        10px;
+
+    font-size:
+        clamp(42px, 5.5vw, 80px);
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    letter-spacing: -3px;
+
+    color: #68472e;
+
+    text-shadow:
+        0 2px 12px
+        rgba(255,255,255,0.4);
+}
+
+
+
+/* 표지 설명 */
+
+.cover-text p {
+    margin:
+        15px
+        0
+        18px;
+
+    font-size:
+        clamp(14px, 1.3vw, 18px);
+
+    line-height: 1.7;
+
+    color: #655b52;
+}
+
+
+
+/* ==================================================
+   표지 알 버튼
+================================================== */
+
+.egg-start {
+    width: 108px;
+    height: 138px;
+
+    margin-top: 2px;
+
+    position: relative;
+
+    display: inline-flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 5%,
+            #fffdf5 55%,
+            #e9dfcc 100%
+        );
+
+    border:
+        1.5px solid
+        rgba(203,187,160,0.7);
+
+    border-radius:
+        50% 50% 46% 46%
+        /
+        60% 60% 40% 40%;
+
+    box-shadow:
+        0 12px 27px
+        rgba(83,58,34,0.18),
+
+        inset -8px -10px 18px
+        rgba(180,155,115,0.12),
+
+        inset 8px 8px 16px
+        rgba(255,255,255,0.9);
+
+    cursor: pointer;
+
+    transition:
+        box-shadow .3s ease;
+}
+
+
+
+/* 알 하이라이트 */
+
+.egg-highlight {
+    width: 20px;
+    height: 38px;
+
+    position: absolute;
+
+    top: 20px;
+    left: 22px;
+
+    background:
+        rgba(255,255,255,.85);
+
+    border-radius: 50%;
+
+    transform: rotate(25deg);
+
+    filter: blur(2px);
+}
+
+
+
+/* 알 글씨 */
+
+.egg-start-text {
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 7px;
+
+    color: #674a33;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    line-height: 1.45;
+}
+
+
+
+/* 화살표 */
+
+.egg-start-arrow {
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 3px;
+
+    font-size: 17px;
+
+    color: #a07956;
+
+    transition:
+        transform .3s ease;
+}
+
+
+
+/* 알 hover */
+
+.egg-start:hover {
+    animation:
+        startEggShake
+        .55s
+        ease;
+
+    box-shadow:
+        0 17px 34px
+        rgba(83,58,34,.25),
+
+        inset -8px -10px 18px
+        rgba(180,155,115,.12);
+}
+
+
+.egg-start:hover .egg-start-arrow {
+    transform:
+        translateX(4px);
+}
+
+
+.egg-start:active {
+    transform:
+        scale(.95);
+}
+
+
+
+/* 알 흔들기 */
+
+@keyframes startEggShake {
+
+    0% {
+        transform: rotate(0);
+    }
+
+    20% {
+        transform: rotate(-7deg);
+    }
+
+    40% {
+        transform: rotate(7deg);
+    }
+
+    60% {
+        transform: rotate(-4deg);
+    }
+
+    80% {
+        transform: rotate(4deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
+}
+
+
+
+/* 표지 등장 */
+
+@keyframes coverFade {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+
+/* ==================================================
+   동화 페이지 BODY
+================================================== */
+
+.story-page {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #f5f5f3;
+
+    padding: 30px;
+}
+
+
+
+/* ==================================================
+   책 화면
+================================================== */
+
+.book {
+    width: min(1180px, 100%);
+
+    height: 720px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.07);
+}
+
+
+
+/* ==================================================
+   PAGE 1
+   상단 애니메이션
+================================================== */
+
+.animation-area {
+    height: 150px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 60px;
+
+    background: #ffffff;
+
+    border-bottom:
+        1px solid #eeeeea;
+}
+
+
+
+/* 알 공간 */
+
+.egg-box {
+    width: 85px;
+    height: 125px;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+
+/* 알 */
+
+.egg {
+    width: 67px;
+    height: 88px;
+
+    position: relative;
+
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fffdf7 55%,
+            #eee8db
+        );
+
+    border:
+        1.5px solid #ded8cc;
+
+    border-radius:
+        52% 52% 47% 47%;
+
+    box-shadow:
+        0 6px 12px
+        rgba(0,0,0,.09);
+}
+
+
+
+/* ==================================================
+   PAGE1 알 흔들기
+================================================== */
+
+.egg1 .egg {
+    animation: shake1 8s infinite;
+}
+
+.egg2 .egg {
+    animation: shake2 8s infinite;
+}
+
+.egg3 .egg {
+    animation: shake3 8s infinite;
+}
+
+.egg4 .egg {
+    animation: shake4 8s infinite;
+}
+
+
+@keyframes shake1 {
+
+    0%,5%,15%,100% {
+        transform: rotate(0);
+    }
+
+    7% {
+        transform: rotate(-7deg);
+    }
+
+    9% {
+        transform: rotate(7deg);
+    }
+
+    11% {
+        transform: rotate(-5deg);
+    }
+
+    13% {
+        transform: rotate(4deg);
+    }
+}
+
+
+@keyframes shake2 {
+
+    0%,22%,32%,100% {
+        transform: rotate(0);
+    }
+
+    24% {
+        transform: rotate(-7deg);
+    }
+
+    26% {
+        transform: rotate(7deg);
+    }
+
+    28% {
+        transform: rotate(-5deg);
+    }
+
+    30% {
+        transform: rotate(4deg);
+    }
+}
+
+
+@keyframes shake3 {
+
+    0%,39%,49%,100% {
+        transform: rotate(0);
+    }
+
+    41% {
+        transform: rotate(-7deg);
+    }
+
+    43% {
+        transform: rotate(7deg);
+    }
+
+    45% {
+        transform: rotate(-5deg);
+    }
+
+    47% {
+        transform: rotate(4deg);
+    }
+}
+
+
+@keyframes shake4 {
+
+    0%,56%,66%,100% {
+        transform: rotate(0);
+    }
+
+    58% {
+        transform: rotate(-7deg);
+    }
+
+    60% {
+        transform: rotate(7deg);
+    }
+
+    62% {
+        transform: rotate(-5deg);
+    }
+
+    64% {
+        transform: rotate(4deg);
+    }
+}
+
+
+
+/* ==================================================
+   PAGE1 금
+================================================== */
+
+.crack {
+    position: absolute;
+
+    top: 29px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-15deg);
+
+    font-size: 27px;
+
+    color: #9f988a;
+
+    opacity: 0;
+}
+
+
+.egg1 .crack {
+    animation: crack1 8s infinite;
+}
+
+.egg2 .crack {
+    animation: crack2 8s infinite;
+}
+
+.egg3 .crack {
+    animation: crack3 8s infinite;
+}
+
+.egg4 .crack {
+    animation: crack4 8s infinite;
+}
+
+
+@keyframes crack1 {
+
+    0%,11%,100% {
+        opacity: 0;
+    }
+
+    13%,92% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes crack2 {
+
+    0%,28%,100% {
+        opacity: 0;
+    }
+
+    30%,92% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes crack3 {
+
+    0%,45%,100% {
+        opacity: 0;
+    }
+
+    47%,92% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes crack4 {
+
+    0%,62%,100% {
+        opacity: 0;
+    }
+
+    64%,92% {
+        opacity: 1;
+    }
+}
+
+
+
+/* ==================================================
+   PAGE1 노란 아기 오리
+================================================== */
+
+.duck-head {
+    width: 50px;
+    height: 50px;
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 25px;
+
+    z-index: 5;
+
+    background: #ffd75b;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(45px)
+        scale(.7);
+
+    box-shadow:
+        inset -4px -3px 0
+        rgba(218,164,30,.12);
+}
+
+
+
+/* 눈 */
+
+.eye {
+    width: 5px;
+    height: 7px;
+
+    position: absolute;
+
+    top: 16px;
+
+    background: #242424;
+
+    border-radius: 50%;
+}
+
+
+.left-eye {
+    left: 12px;
+}
+
+
+.right-eye {
+    right: 12px;
+}
+
+
+
+/* 부리 */
+
+.beak {
+    width: 18px;
+    height: 9px;
+
+    position: absolute;
+
+    left: 50%;
+    top: 28px;
+
+    transform:
+        translateX(-50%);
+
+    background: #efa047;
+
+    border-radius: 50%;
+}
+
+
+
+/* 오리 등장 */
+
+.egg1 .duck-head {
+    animation: duck1 8s infinite;
+}
+
+.egg2 .duck-head {
+    animation: duck2 8s infinite;
+}
+
+.egg3 .duck-head {
+    animation: duck3 8s infinite;
+}
+
+.egg4 .duck-head {
+    animation: duck4 8s infinite;
+}
+
+
+@keyframes duck1 {
+
+    0%,13%,100% {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(45px)
+            scale(.7);
+    }
+
+    19%,92% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(-38px)
+            scale(1);
+    }
+}
+
+
+@keyframes duck2 {
+
+    0%,30%,100% {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(45px)
+            scale(.7);
+    }
+
+    36%,92% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(-38px)
+            scale(1);
+    }
+}
+
+
+@keyframes duck3 {
+
+    0%,47%,100% {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(45px)
+            scale(.7);
+    }
+
+    53%,92% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(-38px)
+            scale(1);
+    }
+}
+
+
+@keyframes duck4 {
+
+    0%,64%,100% {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(45px)
+            scale(.7);
+    }
+
+    70%,92% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(-38px)
+            scale(1);
+    }
+}
+
+
+
+/* 마지막 큰 알 */
+
+.big-egg {
+    width: 82px;
+    height: 105px;
+
+    animation: none !important;
+}
+
+
+
+/* 물음표 */
+
+.question {
+    position: absolute;
+
+    top: -3px;
+    left: 50%;
+
+    z-index: 10;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 26px;
+
+    color: #aaa69e;
+
+    opacity: 0;
+
+    animation:
+        questionShow
+        8s
+        infinite;
+}
+
+
+@keyframes questionShow {
+
+    0%,73%,100% {
+        opacity: 0;
+    }
+
+    80%,92% {
+        opacity: 1;
+    }
+}
+
+
+
+/* ==================================================
+   PAGE2 상단
+================================================== */
+
+.page2-animation {
+    height: 150px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: white;
+
+    border-bottom:
+        1px solid #eeeeea;
+}
+
+
+.big-hatch {
+    width: 120px;
+    height: 130px;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+
+/* 큰 알 */
+
+.page2-egg {
+    width: 82px;
+    height: 105px;
+
+    position: relative;
+
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f0eadc
+        );
+
+    border:
+        1.5px solid #ded8cc;
+
+    border-radius:
+        52% 52% 47% 47%;
+
+    box-shadow:
+        0 6px 12px
+        rgba(0,0,0,.09);
+
+    animation:
+        bigEggShake
+        5s
+        infinite;
+}
+
+
+@keyframes bigEggShake {
+
+    0%,12%,27%,100% {
+        transform: rotate(0);
+    }
+
+    15% {
+        transform: rotate(-6deg);
+    }
+
+    18% {
+        transform: rotate(6deg);
+    }
+
+    21% {
+        transform: rotate(-5deg);
+    }
+
+    24% {
+        transform: rotate(5deg);
+    }
+}
+
+
+
+/* PAGE2 금 */
+
+.page2-crack {
+    position: absolute;
+
+    top: 34px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-15deg);
+
+    font-size: 31px;
+
+    color: #999184;
+
+    opacity: 0;
+
+    animation:
+        bigCrack
+        5s
+        infinite;
+}
+
+
+@keyframes bigCrack {
+
+    0%,24%,100% {
+        opacity: 0;
+    }
+
+    29%,92% {
+        opacity: 1;
+    }
+}
+
+
+
+/* 회색 오리 */
+
+.gray-duck-head {
+    width: 58px;
+    height: 58px;
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 27px;
+
+    z-index: 5;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #aaa9a4,
+            #74766f
+        );
+
+    opacity: 0;
+
+    animation:
+        grayDuckComeOut
+        5s
+        infinite;
+}
+
+
+@keyframes grayDuckComeOut {
+
+    0%,29%,100% {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(45px)
+            scale(.7);
+    }
+
+    38%,90% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(-45px)
+            scale(1);
+    }
+}
+
+
+
+/* 회색 오리 눈 */
+
+.gray-eye {
+    width: 6px;
+    height: 8px;
+
+    position: absolute;
+
+    top: 18px;
+
+    background: #222;
+
+    border-radius: 50%;
+}
+
+
+.gray-left {
+    left: 15px;
+}
+
+
+.gray-right {
+    right: 15px;
+}
+
+
+
+/* 회색 오리 부리 */
+
+.gray-beak {
+    width: 20px;
+    height: 10px;
+
+    position: absolute;
+
+    left: 50%;
+    top: 32px;
+
+    transform:
+        translateX(-50%);
+
+    background: #d49a54;
+
+    border-radius: 50%;
+}
+
+
+
+/* 톡 톡 */
+
+.tap {
+    position: absolute;
+
+    font-size: 14px;
+
+    color: #aaa;
+
+    opacity: 0;
+}
+
+
+.tap1 {
+    top: 20px;
+    left: -5px;
+
+    animation:
+        tapOne
+        5s
+        infinite;
+}
+
+
+.tap2 {
+    top: 5px;
+    right: -5px;
+
+    animation:
+        tapTwo
+        5s
+        infinite;
+}
+
+
+@keyframes tapOne {
+
+    0%,10%,23%,100% {
+        opacity: 0;
+    }
+
+    14%,19% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes tapTwo {
+
+    0%,15%,28%,100% {
+        opacity: 0;
+    }
+
+    19%,24% {
+        opacity: 1;
+    }
+}
+
+
+
+/* ==================================================
+   PAGE3 상단
+================================================== */
+
+.page3-animation {
+    height: 150px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: white;
+
+    border-bottom:
+        1px solid #eeeeea;
+}
+
+
+.duck-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 34px;
+}
+
+
+
+/* 작은 오리 */
+
+.mini-duck {
+    width: 54px;
+    height: 54px;
+
+    position: relative;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 5px 12px
+        rgba(0,0,0,.08);
+}
+
+
+
+/* 노란 오리 */
+
+.yellow-duck {
+    background: #ffd75b;
+
+    animation:
+        miniDuckMove
+        6s
+        ease-in-out
+        infinite;
+}
+
+
+
+/* 회색 주인공 */
+
+.gray-main-duck {
+    width: 62px;
+    height: 62px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a9aaa5,
+            #74766f
+        );
+
+    animation:
+        grayBreathe
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+
+/* 작은 오리 눈 */
+
+.mini-eye {
+    width: 6px;
+    height: 8px;
+
+    position: absolute;
+
+    top: 17px;
+    left: 16px;
+
+    background: #222;
+
+    border-radius: 50%;
+
+    box-shadow:
+        20px 0 #222;
+}
+
+
+
+/* 작은 부리 */
+
+.mini-beak {
+    width: 18px;
+    height: 9px;
+
+    position: absolute;
+
+    top: 31px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    background: #e89d43;
+
+    border-radius: 50%;
+}
+
+
+
+/* 움직임 */
+
+.yellow-duck:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.yellow-duck:nth-child(2) {
+    animation-delay: .3s;
+}
+
+.yellow-duck:nth-child(4) {
+    animation-delay: .6s;
+}
+
+.yellow-duck:nth-child(5) {
+    animation-delay: .9s;
+}
+
+
+@keyframes miniDuckMove {
+
+    0%,35%,100% {
+        transform:
+            translateY(0);
+    }
+
+    55%,80% {
+        transform:
+            translateY(-5px);
+    }
+}
+
+
+@keyframes grayBreathe {
+
+    0%,100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-4px);
+    }
+}
+
+
+
+/* ? */
+
+.small-question {
+    position: absolute;
+
+    top: -28px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    color: #aaa;
+
+    font-size: 21px;
+
+    animation:
+        littleQuestion
+        3s
+        infinite;
+}
+
+
+@keyframes littleQuestion {
+
+    0%,25%,100% {
+        opacity: 0;
+    }
+
+    50%,80% {
+        opacity: 1;
+    }
+}
+
+
+
+/* ==================================================
+   공통 메인 내용
+================================================== */
+
+.content {
+    height: 570px;
+
+    display: flex;
+}
+
+
+
+/* 왼쪽 글 */
+
+.story {
+    width: 40%;
+
+    padding:
+        45px
+        50px
+        35px
+        60px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    background: #ffffff;
+}
+
+
+
+/* 페이지 번호 */
+
+.chapter {
+    margin-bottom: 10px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color: #b9b9b9;
+}
+
+
+
+/* 제목 */
+
+.story h1 {
+    margin:
+        0
+        0
+        23px;
+
+    font-size:
+        clamp(38px, 4vw, 52px);
+
+    font-weight: 800;
+
+    line-height: 1.15;
+
+    letter-spacing: -2px;
+
+    color: #242424;
+}
+
+
+
+/* 대사 */
+
+.story h2 {
+    margin:
+        19px
+        0
+        7px;
+
+    font-size:
+        clamp(20px, 2vw, 27px);
+
+    line-height: 1.35;
+
+    color: #e99a3b;
+}
+
+
+
+/* 본문 */
+
+.story p {
+    margin: 0;
+
+    font-size:
+        clamp(15px, 1.5vw, 18px);
+
+    line-height: 1.8;
+
+    letter-spacing: -.3px;
+
+    color: #555;
+}
+
+
+
+/* ==================================================
+   페이지 이동
+================================================== */
+
+.page-nav {
+    margin-top: 28px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.page-nav-right {
+    justify-content: flex-end;
+}
+
+
+.page-nav a {
+    color: #8b725b;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        transform .25s ease,
+        color .25s ease;
+}
+
+
+.page-nav a:hover {
+    color: #e99a3b;
+
+    transform:
+        translateY(-2px);
+}
+
+
+
+/* ==================================================
+   오른쪽 그림
+================================================== */
+
+.picture {
+    width: 60%;
+    height: 100%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #eee;
+}
+
+
+.picture img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    animation:
+        pictureMove
+        12s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+@keyframes pictureMove {
+
+    from {
+        transform:
+            scale(1);
+    }
+
+    to {
+        transform:
+            scale(1.035);
+    }
+}
+
+
+
+/* ==================================================
+   태블릿
+================================================== */
+
+@media (max-width: 1000px) {
+
+    /* 표지 */
+
+    .cover {
+        background-position:
+            40% center;
+    }
+
+
+    /* 책 */
+
+    .story-page {
+        padding: 20px;
+    }
+
+
+    .book {
+        height: 680px;
+    }
+
+
+    .animation-area,
+    .page2-animation,
+    .page3-animation {
+        height: 140px;
+    }
+
+
+    .content {
+        height: 540px;
+    }
+
+
+    .story {
+        width: 43%;
+
+        padding:
+            35px
+            35px
+            30px
+            40px;
+    }
+
+
+    .picture {
+        width: 57%;
+    }
+
+
+    .animation-area {
+        gap: 35px;
+    }
+
+}
+
+
+
+/* ==================================================
+   모바일
+================================================== */
+
+@media (max-width: 700px) {
+
+    /* ---------------------------
+       표지
+    --------------------------- */
+
+    .cover {
+        height: 100svh;
+
+        min-height: 560px;
+
+        background-size: cover;
+
+        background-position:
+            35% center;
+    }
+
+
+    .cover-text {
+        margin-top: 25px;
+
+        padding: 15px;
+    }
+
+
+    .english-title {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .cover-text h1 {
+        margin:
+            9px
+            0;
+
+        font-size:
+            clamp(36px, 11vw, 50px);
+
+        letter-spacing: -2px;
+    }
+
+
+    .cover-text p {
+        margin:
+            10px
+            0
+            15px;
+
+        font-size: 13px;
+    }
+
+
+    /* 알 시작 버튼 */
+
+    .egg-start {
+        width: 84px;
+        height: 108px;
+    }
+
+
+    .egg-highlight {
+        width: 15px;
+        height: 28px;
+
+        top: 15px;
+        left: 17px;
+    }
+
+
+    .egg-start-text {
+        font-size: 11px;
+    }
+
+
+    .egg-start-arrow {
+        font-size: 13px;
+    }
+
+
+
+    /* ---------------------------
+       동화 페이지
+    --------------------------- */
+
+    .story-page {
+        display: block;
+
+        padding: 0;
+
+        background: #ffffff;
+    }
+
+
+    .book {
+        width: 100%;
+        height: auto;
+
+        border-radius: 0;
+
+        box-shadow: none;
+    }
+
+
+    /* 상단 */
+
+    .animation-area,
+    .page2-animation,
+    .page3-animation {
+        height: 125px;
+    }
+
+
+    .animation-area {
+        gap: 10px;
+
+        padding:
+            0
+            10px;
+    }
+
+
+    .egg-box {
+        width: 60px;
+
+        transform:
+            scale(.72);
+    }
+
+
+    .big-hatch {
+        transform:
+            scale(.82);
+    }
+
+
+    .duck-row {
+        gap: 12px;
+
+        transform:
+            scale(.78);
+    }
+
+
+    /* 글 + 사진 세로 */
+
+    .content {
+        height: auto;
+
+        flex-direction: column;
+    }
+
+
+    .story {
+        width: 100%;
+
+        min-height: 430px;
+
+        padding:
+            40px
+            30px;
+    }
+
+
+    .story h1 {
+        font-size: 38px;
+    }
+
+
+    .story h2 {
+        font-size: 21px;
+    }
+
+
+    .story p {
+        font-size: 15px;
+    }
+
+
+    /* 그림 */
+
+    .picture {
+        width: 100%;
+        height: 420px;
+    }
+
+
+    /* 이동 버튼 */
+
+    .page-nav {
+        margin-top: 25px;
+    }
+
+}
+
+
+
+/* ==================================================
+   아주 작은 휴대폰
+================================================== */
+
+@media (max-width: 420px) {
+
+    .animation-area {
+        gap: 2px;
+    }
+
+
+    .egg-box {
+        transform:
+            scale(.63);
+    }
+
+
+    .duck-row {
+        gap: 5px;
+
+        transform:
+            scale(.72);
+    }
+
+
+    .story {
+        padding:
+            35px
+            25px;
+    }
+
+
+    .picture {
+        height: 360px;
+    }
+
+}
