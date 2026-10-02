@@ -1,0 +1,3359 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cream: #f3eadb;
+    --paper: #e5d7bd;
+    --ink: #332820;
+    --brown: #655044;
+    --wine: #75473f;
+    --green: #315742;
+    --gold: #b18a5e;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+
+    font-family:
+        "Gowun Dodum",
+        sans-serif;
+
+    background: #17110e;
+    color: var(--ink);
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+
+/* =========================================================
+   MEMORY INTRO
+========================================================= */
+
+#memoryIntro {
+    position: fixed;
+    inset: 0;
+
+    z-index: 20000;
+
+    overflow: hidden;
+
+    background: #080604;
+
+    color: white;
+}
+
+
+
+/* =========================================================
+   INTRO IMAGES
+========================================================= */
+
+.memory-scene {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    overflow: hidden;
+
+    transition:
+        opacity 1.2s ease;
+}
+
+.memory-scene.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.memory-scene img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center center;
+
+    filter:
+        brightness(.74)
+        contrast(1.05)
+        saturate(.80)
+        sepia(.16);
+}
+
+
+
+/* =========================================================
+   SCENE 1
+========================================================= */
+
+.memory-scene[data-scene="0"].active img {
+    animation:
+        memoryCamera1
+        3.6s linear forwards;
+}
+
+@keyframes memoryCamera1 {
+
+    from {
+        transform:
+            scale(1.04)
+            translate(0, 0);
+    }
+
+    to {
+        transform:
+            scale(1.12)
+            translate(-1%, -.5%);
+    }
+
+}
+
+
+
+/* =========================================================
+   SCENE 2
+   핵심 수정:
+   사진 속 글이 잘리지 않도록 확대를 거의 하지 않음
+========================================================= */
+
+.memory-scene[data-scene="1"] {
+    background:
+        #100b08;
+}
+
+.memory-scene[data-scene="1"] img {
+    object-position:
+        center center;
+}
+
+.memory-scene[data-scene="1"].active img {
+    animation:
+        memoryCamera2
+        3.6s linear forwards;
+}
+
+@keyframes memoryCamera2 {
+
+    from {
+        transform:
+            scale(1);
+    }
+
+    to {
+        transform:
+            scale(1.025);
+    }
+
+}
+
+
+
+/* =========================================================
+   SCENE 3
+========================================================= */
+
+.memory-scene[data-scene="2"].active img {
+    animation:
+        memoryCamera3
+        3.6s linear forwards;
+}
+
+@keyframes memoryCamera3 {
+
+    from {
+        transform:
+            scale(1.04)
+            translate(0, 0);
+    }
+
+    to {
+        transform:
+            scale(1.12)
+            translate(-1%, -1%);
+    }
+
+}
+
+
+
+/* =========================================================
+   SCENE 4
+========================================================= */
+
+.memory-scene[data-scene="3"].active img {
+    animation:
+        memoryCamera4
+        3.6s linear forwards;
+}
+
+@keyframes memoryCamera4 {
+
+    from {
+        transform:
+            scale(1.03);
+    }
+
+    to {
+        transform:
+            scale(1.11)
+            translate(1%, -.5%);
+    }
+
+}
+
+
+
+/* =========================================================
+   SCENE 5
+========================================================= */
+
+.memory-scene[data-scene="4"].active img {
+    animation:
+        memoryCamera5
+        4.5s linear forwards;
+}
+
+@keyframes memoryCamera5 {
+
+    from {
+        transform:
+            scale(1.08);
+    }
+
+    to {
+        transform:
+            scale(1.03);
+    }
+
+}
+
+
+
+/* =========================================================
+   작은 화면에서 2번 사진 전체 표시
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .memory-scene[data-scene="1"] {
+        background:
+            radial-gradient(
+                circle at center,
+                #382a21,
+                #0c0806 80%
+            );
+    }
+
+    .memory-scene[data-scene="1"] img {
+        object-fit: contain;
+        object-position: center center;
+    }
+
+    .memory-scene[data-scene="1"].active img {
+        animation:
+            memoryCamera2Small
+            3.6s linear forwards;
+    }
+
+    @keyframes memoryCamera2Small {
+
+        from {
+            transform: scale(.97);
+        }
+
+        to {
+            transform: scale(1);
+        }
+
+    }
+
+}
+
+
+
+/* =========================================================
+   DARK CINEMA FILTER
+========================================================= */
+
+.memory-dark {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, .42),
+            transparent 40%,
+            transparent 70%,
+            rgba(0, 0, 0, .25)
+        ),
+
+        linear-gradient(
+            0deg,
+            rgba(0, 0, 0, .45),
+            transparent 45%
+        );
+
+    box-shadow:
+        inset 0 0 190px
+        rgba(0, 0, 0, .75);
+}
+
+
+
+/* =========================================================
+   VHS
+========================================================= */
+
+.vhs-lines {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 7;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 2px,
+            rgba(255,255,255,.10) 3px,
+            transparent 4px
+        );
+}
+
+
+.vhs-noise {
+    position: absolute;
+
+    inset: -50%;
+
+    z-index: 8;
+
+    pointer-events: none;
+
+    opacity: .07;
+
+    background-image:
+        repeating-radial-gradient(
+            circle at 30% 40%,
+            rgba(255,255,255,.6) 0,
+            rgba(255,255,255,.6) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    background-size:
+        6px 6px;
+
+    animation:
+        noiseMove .16s steps(2) infinite;
+}
+
+
+@keyframes noiseMove {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(2%, -1%);
+    }
+
+    50% {
+        transform: translate(-1%, 2%);
+    }
+
+    75% {
+        transform: translate(1%, 1%);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+
+}
+
+
+.vhs-flash {
+    position: absolute;
+
+    z-index: 9;
+
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    top: -10%;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    background: white;
+
+    box-shadow:
+        0 0 10px white;
+
+    animation:
+        vhsFlash 5s linear infinite;
+}
+
+
+@keyframes vhsFlash {
+
+    0% {
+        top: -10%;
+        opacity: 0;
+    }
+
+    4% {
+        opacity: .18;
+    }
+
+    8% {
+        top: 110%;
+        opacity: 0;
+    }
+
+    100% {
+        top: 110%;
+        opacity: 0;
+    }
+
+}
+
+
+
+/* =========================================================
+   CAMCORDER
+========================================================= */
+
+.cam-rec {
+    position: absolute;
+
+    z-index: 20;
+
+    top: 38px;
+    left: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-family: monospace;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,.8);
+}
+
+
+.rec-dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #d94132;
+
+    box-shadow:
+        0 0 8px #e84235;
+
+    animation:
+        recBlink 1s infinite;
+}
+
+
+@keyframes recBlink {
+
+    50% {
+        opacity: .25;
+    }
+
+}
+
+
+.cam-date {
+    position: absolute;
+
+    z-index: 20;
+
+    left: 42px;
+    bottom: 42px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    font-family: monospace;
+
+    font-size:
+        clamp(
+            14px,
+            1.4vw,
+            21px
+        );
+
+    line-height: 1.3;
+
+    text-shadow:
+        2px 2px 0 rgba(0,0,0,.7);
+}
+
+
+.cam-battery {
+    position: absolute;
+
+    z-index: 20;
+
+    top: 39px;
+    right: 42px;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+.battery-body {
+    width: 35px;
+    height: 16px;
+
+    padding: 2px;
+
+    display: flex;
+
+    gap: 2px;
+
+    border: 1px solid white;
+}
+
+
+.battery-body i {
+    flex: 1;
+    background: white;
+}
+
+
+.cam-battery > span {
+    width: 3px;
+    height: 8px;
+
+    background: white;
+}
+
+
+
+/* =========================================================
+   MEMORY COPY
+========================================================= */
+
+.memory-copy {
+    position: absolute;
+
+    z-index: 30;
+
+    left: 8%;
+    top: 50%;
+
+    max-width: 560px;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+    text-shadow:
+        0 4px 20px rgba(0,0,0,.9);
+}
+
+
+.memory-copy.show {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+.memory-copy span,
+.memory-copy p {
+    display: block;
+
+    margin-bottom: 15px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,244,224,.80);
+}
+
+
+.memory-copy h1 {
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size:
+        clamp(
+            34px,
+            4vw,
+            60px
+        );
+
+    line-height: 1.45;
+
+    font-weight: normal;
+
+    letter-spacing: -2px;
+}
+
+
+.memory-copy small {
+    display: block;
+
+    margin-top: 25px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,.70);
+}
+
+
+.memory-copy-center {
+    left: 50%;
+    top: 50%;
+
+    width: 700px;
+
+    max-width: 80%;
+
+    text-align: center;
+
+    transform:
+        translate(-50%, -40%);
+}
+
+
+.memory-copy-center.show {
+    transform:
+        translate(-50%, -50%);
+}
+
+
+.memory-copy-bottom {
+    top: auto;
+
+    left: 10%;
+    bottom: 14%;
+}
+
+
+
+/* =========================================================
+   MEMORY END
+========================================================= */
+
+#memoryEnding {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 40;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    background:
+        rgba(11,7,5,.83);
+
+    transition:
+        opacity 1.4s ease;
+}
+
+
+#memoryEnding.show {
+    opacity: 1;
+}
+
+
+#memoryEnding p {
+    margin-bottom: 25px;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #bba58e;
+}
+
+
+#memoryEnding h1 {
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size:
+        clamp(
+            40px,
+            5vw,
+            70px
+        );
+
+    font-weight: normal;
+
+    line-height: 1.5;
+
+    color: #f0e5d6;
+}
+
+
+
+/* =========================================================
+   SKIP
+========================================================= */
+
+#skipMemory {
+    position: absolute;
+
+    z-index: 100;
+
+    right: 40px;
+    bottom: 37px;
+
+    padding: 8px 0;
+
+    border: none;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.5);
+
+    background: transparent;
+
+    color:
+        rgba(255,255,255,.75);
+
+    font-family: Arial;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+#skipMemory span {
+    margin-left: 8px;
+}
+
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+#memoryProgress {
+    position: absolute;
+
+    z-index: 100;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background:
+        rgba(255,255,255,.12);
+}
+
+
+#memoryProgressBar {
+    width: 0;
+    height: 100%;
+
+    background:
+        rgba(237,215,184,.75);
+}
+
+
+
+/* =========================================================
+   SECOND INTRO
+========================================================= */
+
+#intro {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 43%,
+            rgba(217,169,108,.27),
+            transparent 32%
+        ),
+
+        linear-gradient(
+            rgba(45,33,25,.77),
+            rgba(25,19,15,.94)
+        ),
+
+        #62564a;
+}
+
+
+#intro.show {
+    display: flex;
+
+    animation:
+        introReveal 1.5s ease forwards;
+}
+
+
+@keyframes introReveal {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+#intro::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        repeating-linear-gradient(
+            87deg,
+            rgba(255,255,255,.015) 0,
+            rgba(255,255,255,.015) 2px,
+            transparent 3px,
+            transparent 21px
+        ),
+
+        radial-gradient(
+            ellipse at 15% 30%,
+            rgba(0,0,0,.26),
+            transparent 18%
+        ),
+
+        radial-gradient(
+            ellipse at 82% 65%,
+            rgba(0,0,0,.28),
+            transparent 20%
+        );
+}
+
+
+.intro-shadow {
+    position: absolute;
+
+    inset: 0;
+
+    box-shadow:
+        inset 0 0 260px
+        rgba(0,0,0,.75);
+}
+
+
+.intro-content {
+    position: relative;
+
+    z-index: 10;
+
+    width: 700px;
+
+    max-width: 90%;
+
+    text-align: center;
+
+    color: #f7ecdc;
+}
+
+
+.intro-small {
+    font-size: 9px;
+
+    letter-spacing: 7px;
+
+    color: #c3a17e;
+}
+
+
+.intro-sub {
+    margin-top: 25px;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color: #d1b596;
+}
+
+
+.intro-content h1 {
+    margin-top: 12px;
+
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size:
+        clamp(
+            48px,
+            6vw,
+            85px
+        );
+
+    font-weight: normal;
+
+    line-height: 1.25;
+
+    letter-spacing: -4px;
+}
+
+
+.intro-content h1 em {
+    font-style: normal;
+
+    color: #e0b27e;
+}
+
+
+.intro-description {
+    margin-top: 30px;
+
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size: 14px;
+
+    line-height: 2;
+
+    color: #d6c8b7;
+}
+
+
+#enterBtn {
+    min-width: 270px;
+
+    margin-top: 38px;
+
+    padding: 17px 25px;
+
+    display: inline-flex;
+
+    justify-content: space-between;
+
+    border:
+        1px solid rgba(255,255,255,.25);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color: #fff5e7;
+
+    letter-spacing: 2px;
+
+    transition: .3s;
+}
+
+
+#enterBtn:hover {
+    background: #e8d5ba;
+
+    color: #392a22;
+
+    transform:
+        translateY(-3px);
+}
+
+
+.intro-donation {
+    margin-top: 20px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #a99580;
+}
+
+
+
+/* =========================================================
+   INTRO GRAFFITI
+========================================================= */
+
+.intro-graffiti {
+    position: absolute;
+
+    font-family:
+        "Nanum Pen Script",
+        cursive;
+
+    color:
+        rgba(255,239,214,.12);
+
+    font-size: 40px;
+}
+
+
+.ig1 {
+    left: 7%;
+    top: 20%;
+
+    transform: rotate(-8deg);
+}
+
+
+.ig2 {
+    right: 6%;
+    top: 23%;
+
+    transform: rotate(6deg);
+}
+
+
+.ig3 {
+    left: 14%;
+    bottom: 18%;
+}
+
+
+.ig4 {
+    right: 11%;
+    bottom: 20%;
+
+    transform: rotate(-6deg);
+}
+
+
+.ig5 {
+    right: 17%;
+    top: 52%;
+
+    font-size: 58px;
+}
+
+
+.ig6 {
+    left: 18%;
+    top: 48%;
+
+    font-size: 60px;
+}
+
+
+.ig7 {
+    left: 5%;
+    top: 65%;
+
+    transform: rotate(5deg);
+}
+
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+#mainPage {
+    display: none;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    width: 100%;
+    height: 76px;
+
+    padding: 0 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        rgba(244,237,226,.96);
+
+    border-bottom:
+        1px solid rgba(75,53,38,.14);
+
+    backdrop-filter:
+        blur(15px);
+}
+
+
+.logo-area {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.logo-heart {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid #9c765c;
+
+    border-radius: 50%;
+
+    color: #845345;
+}
+
+
+.logo-area h2 {
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size: 19px;
+
+    font-weight: normal;
+}
+
+
+.logo-area span {
+    display: block;
+
+    font-size: 6px;
+
+    letter-spacing: 3px;
+
+    color: #99816f;
+}
+
+
+.heart-status {
+    position: absolute;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 9px;
+
+    color: #927d6d;
+}
+
+
+.heart-status i {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #9c6550;
+
+    animation:
+        heartPulse 2s infinite;
+}
+
+
+@keyframes heartPulse {
+
+    50% {
+        opacity: .3;
+    }
+
+}
+
+
+.header-buttons {
+    display: flex;
+
+    gap: 6px;
+}
+
+
+.header-buttons button {
+    height: 38px;
+
+    padding: 0 14px;
+
+    border:
+        1px solid #d0c0ad;
+
+    background: transparent;
+
+    color: #655248;
+
+    font-size: 10px;
+}
+
+
+.header-buttons button:hover {
+    background: #fffaf2;
+}
+
+
+.header-buttons .write-btn {
+    background: #382b25;
+
+    border-color: #382b25;
+
+    color: white;
+}
+
+
+
+/* =========================================================
+   WALL VIEWPORT
+========================================================= */
+
+#wallViewport {
+    position: absolute;
+
+    top: 76px;
+    bottom: 58px;
+
+    left: 0;
+    right: 0;
+
+    overflow: scroll;
+
+    cursor: grab;
+
+    scrollbar-width: none;
+
+    background: #bcb09e;
+}
+
+
+#wallViewport::-webkit-scrollbar {
+    display: none;
+}
+
+
+#wallViewport.dragging {
+    cursor: grabbing;
+}
+
+
+
+/* =========================================================
+   WALL
+========================================================= */
+
+#wall {
+    position: relative;
+
+    width: 10000px;
+    height: 5000px;
+
+    transform-origin: 0 0;
+
+    overflow: hidden;
+
+    background-color: #d5cdbf;
+
+    background-image:
+
+        radial-gradient(
+            ellipse at 11% 18%,
+            rgba(90,65,40,.15),
+            transparent 11%
+        ),
+
+        radial-gradient(
+            ellipse at 44% 68%,
+            rgba(95,67,42,.13),
+            transparent 13%
+        ),
+
+        radial-gradient(
+            ellipse at 79% 28%,
+            rgba(89,63,41,.11),
+            transparent 12%
+        ),
+
+        radial-gradient(
+            ellipse at 65% 82%,
+            rgba(255,255,255,.22),
+            transparent 15%
+        ),
+
+        repeating-linear-gradient(
+            92deg,
+            rgba(73,57,44,.022) 0,
+            rgba(73,57,44,.022) 2px,
+            transparent 3px,
+            transparent 18px
+        ),
+
+        repeating-linear-gradient(
+            4deg,
+            transparent 0,
+            transparent 32px,
+            rgba(67,51,39,.028) 33px,
+            transparent 35px
+        );
+}
+
+
+#wall::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 900;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 50%,
+            rgba(72,49,32,.11)
+        );
+}
+
+
+
+/* =========================================================
+   STAINS
+========================================================= */
+
+.wall-stain {
+    position: absolute;
+
+    z-index: 1;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(5px);
+
+    background:
+        rgba(91,69,48,.08);
+}
+
+
+.stain1 {
+    left: 900px;
+    top: 700px;
+
+    width: 500px;
+    height: 170px;
+
+    transform: rotate(15deg);
+}
+
+
+.stain2 {
+    left: 6200px;
+    top: 400px;
+
+    width: 700px;
+    height: 220px;
+}
+
+
+.stain3 {
+    left: 3200px;
+    top: 4100px;
+
+    width: 900px;
+    height: 200px;
+}
+
+
+.stain4 {
+    left: 8500px;
+    top: 2100px;
+
+    width: 500px;
+    height: 500px;
+}
+
+
+.stain5 {
+    left: 1500px;
+    top: 3400px;
+
+    width: 650px;
+    height: 250px;
+}
+
+
+
+/* =========================================================
+   WALL CENTER
+========================================================= */
+
+#wallCenter {
+    position: absolute;
+
+    left: 5000px;
+    top: 2500px;
+
+    z-index: 5;
+
+    width: 420px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-1deg);
+
+    text-align: center;
+
+    color:
+        rgba(73,57,45,.43);
+}
+
+
+#wallCenter > span {
+    font-size: 7px;
+
+    letter-spacing: 6px;
+}
+
+
+#wallCenter h2 {
+    margin-top: 15px;
+
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size: 30px;
+
+    font-weight: normal;
+}
+
+
+#wallCenter p {
+    margin-top: 10px;
+
+    font-size: 10px;
+}
+
+
+#wallCenter small {
+    display: block;
+
+    margin-top: 25px;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+
+/* =========================================================
+   WALL OBJECT
+========================================================= */
+
+.wall-object {
+    position: absolute;
+
+    z-index: 20;
+
+    user-select: none;
+}
+
+
+
+/* =========================================================
+   TAPE
+========================================================= */
+
+.tape {
+    position: absolute;
+
+    width: 70px;
+    height: 22px;
+
+    background:
+        rgba(211,193,151,.6);
+}
+
+
+.tape-left {
+    top: -10px;
+    left: -22px;
+
+    transform: rotate(-13deg);
+}
+
+
+.tape-right {
+    right: -22px;
+    bottom: -7px;
+
+    transform: rotate(8deg);
+}
+
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu-board {
+    width: 280px;
+
+    padding: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e8ddc5,
+            #d8c7a7
+        );
+
+    border:
+        1px solid #95836b;
+
+    box-shadow:
+        4px 7px 12px
+        rgba(57,42,29,.22);
+
+    color: #453a31;
+}
+
+
+.object-small {
+    display: block;
+
+    text-align: center;
+
+    font-size: 7px;
+
+    letter-spacing: 3px;
+}
+
+
+.menu-board h3 {
+    margin: 15px 0 20px;
+
+    text-align: center;
+
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size: 24px;
+}
+
+
+.menu-line {
+    padding: 7px 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    border-bottom:
+        1px dotted rgba(66,52,40,.35);
+
+    font-size: 12px;
+}
+
+
+.menu-line b {
+    font-weight: normal;
+}
+
+
+.menu-note {
+    display: block;
+
+    margin-top: 18px;
+
+    text-align: center;
+
+    font-family:
+        "Nanum Pen Script",
+        cursive;
+
+    font-size: 20px;
+}
+
+
+
+/* =========================================================
+   ADS
+========================================================= */
+
+.ad-object {
+    cursor: pointer;
+
+    transition: filter .25s;
+}
+
+
+.ad-object:hover {
+    filter:
+        drop-shadow(
+            0 13px 10px
+            rgba(42,31,22,.23)
+        );
+}
+
+
+.ad-label {
+    position: absolute;
+
+    top: 8px;
+    right: 8px;
+
+    padding: 4px 6px;
+
+    background:
+        rgba(255,255,255,.8);
+
+    color: #66594e;
+
+    font-family: Arial;
+
+    font-size: 6px;
+
+    letter-spacing: 1px;
+}
+
+
+
+/* =========================================================
+   SOJU AD
+========================================================= */
+
+.soju-ad {
+    width: 300px;
+    height: 420px;
+
+    padding: 38px 30px;
+
+    overflow: hidden;
+
+    border:
+        7px solid #eee4ce;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dcd5b8,
+            #b9b58f
+        );
+
+    box-shadow:
+        6px 10px 18px
+        rgba(46,34,24,.25);
+
+    color: #254737;
+}
+
+
+.soju-copy {
+    font-size: 12px;
+}
+
+
+.soju-ad h2 {
+    margin-top: 12px;
+
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size: 36px;
+
+    font-weight: normal;
+
+    line-height: 1.3;
+}
+
+
+.soju-ad > p {
+    margin-top: 13px;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+
+.soju-ad > strong {
+    position: absolute;
+
+    left: 28px;
+    bottom: 42px;
+
+    font-size: 18px;
+}
+
+
+.soju-ad > small {
+    position: absolute;
+
+    left: 28px;
+    bottom: 27px;
+
+    font-family: Arial;
+
+    font-size: 6px;
+
+    letter-spacing: 2px;
+}
+
+
+.bottle {
+    position: absolute;
+
+    right: 35px;
+    bottom: -28px;
+
+    width: 78px;
+    height: 250px;
+
+    border-radius:
+        22px 22px 12px 12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #315f48,
+            #45765b,
+            #294e3d
+        );
+
+    transform: rotate(7deg);
+}
+
+
+.bottle-neck {
+    position: absolute;
+
+    width: 34px;
+    height: 38px;
+
+    left: 22px;
+    top: -28px;
+
+    background: #315143;
+}
+
+
+.bottle-label {
+    position: absolute;
+
+    left: 8px;
+    right: 8px;
+
+    top: 90px;
+
+    padding: 14px 4px;
+
+    border-radius: 50%;
+
+    background: #ede3ca;
+
+    color: #3b5745;
+
+    text-align: center;
+
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size: 13px;
+}
+
+
+
+/* =========================================================
+   RESTAURANT AD
+========================================================= */
+
+.restaurant-ad {
+    width: 300px;
+    height: 360px;
+
+    padding: 35px;
+
+    overflow: hidden;
+
+    background: #efe1c6;
+
+    border:
+        8px solid #f4ead7;
+
+    box-shadow:
+        5px 8px 15px
+        rgba(50,35,25,.2);
+
+    color: #6c382d;
+}
+
+
+.restaurant-small {
+    font-size: 11px;
+}
+
+
+.restaurant-ad h2 {
+    margin-top: 12px;
+
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size: 34px;
+
+    line-height: 1.3;
+
+    font-weight: normal;
+}
+
+
+.restaurant-ad > strong {
+    position: absolute;
+
+    left: 35px;
+    bottom: 48px;
+
+    font-size: 18px;
+}
+
+
+.restaurant-ad > span {
+    position: absolute;
+
+    left: 35px;
+    bottom: 27px;
+
+    font-size: 8px;
+}
+
+
+.food-circle {
+    position: absolute;
+
+    right: -25px;
+    bottom: 35px;
+
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #843f30;
+
+    color: white;
+
+    text-align: center;
+
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size: 18px;
+}
+
+
+
+/* =========================================================
+   RECEIPT
+========================================================= */
+
+.receipt-ad {
+    width: 220px;
+
+    padding: 25px 20px;
+
+    background: #eee9dc;
+
+    box-shadow:
+        4px 7px 13px
+        rgba(51,39,29,.2);
+
+    font-family: monospace;
+
+    color: #554e46;
+}
+
+
+.receipt-title {
+    text-align: center;
+
+    font-size: 18px;
+
+    letter-spacing: 4px;
+}
+
+
+.receipt-ad > p {
+    margin-top: 10px;
+
+    text-align: center;
+
+    font-size: 9px;
+}
+
+
+.receipt-ad hr {
+    margin: 13px 0;
+
+    border: none;
+
+    border-top:
+        1px dashed #8c857a;
+}
+
+
+.receipt-row {
+    margin: 7px 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 9px;
+}
+
+
+.receipt-ad > strong {
+    display: block;
+
+    text-align: right;
+
+    font-size: 11px;
+}
+
+
+.receipt-brand {
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size:
+        15px !important;
+}
+
+
+.receipt-ad small {
+    display: block;
+
+    margin-top: 10px;
+
+    text-align: center;
+
+    font-size: 7px;
+}
+
+
+
+/* =========================================================
+   WIFI
+========================================================= */
+
+.wifi-paper {
+    width: 180px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    background: #e9e0ce;
+
+    border:
+        1px solid #aa9b87;
+
+    box-shadow:
+        3px 5px 8px
+        rgba(51,39,28,.15);
+}
+
+
+.wifi-paper span {
+    display: block;
+
+    font-size: 22px;
+}
+
+
+.wifi-paper strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 11px;
+}
+
+
+.wifi-paper p {
+    margin-top: 6px;
+
+    font-family: monospace;
+
+    font-size: 9px;
+}
+
+
+
+/* =========================================================
+   ORIGIN
+========================================================= */
+
+.origin-paper {
+    width: 230px;
+
+    padding: 23px;
+
+    background: #eee6d6;
+
+    border:
+        1px solid #a99b88;
+
+    box-shadow:
+        3px 6px 10px
+        rgba(51,39,28,.17);
+}
+
+
+.origin-paper h3 {
+    padding-bottom: 10px;
+
+    border-bottom:
+        1px solid #948675;
+
+    font-size: 14px;
+}
+
+
+.origin-paper p {
+    margin-top: 9px;
+
+    font-size: 10px;
+}
+
+
+
+/* =========================================================
+   CALENDAR
+========================================================= */
+
+.calendar {
+    width: 230px;
+
+    padding-bottom: 20px;
+
+    background: #e9e2d3;
+
+    box-shadow:
+        5px 7px 13px
+        rgba(50,38,28,.22);
+
+    text-align: center;
+}
+
+
+.calendar-top {
+    padding: 10px;
+
+    background: #844b40;
+
+    color: white;
+
+    font-size: 11px;
+}
+
+
+.calendar > strong {
+    display: block;
+
+    margin-top: 15px;
+
+    font-family: serif;
+
+    font-size: 50px;
+
+    font-weight: normal;
+}
+
+
+.calendar > span {
+    font-size: 8px;
+
+    letter-spacing: 4px;
+}
+
+
+.calendar-grid {
+    margin: 15px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 5px;
+}
+
+
+.calendar-grid i {
+    font-family: Arial;
+
+    font-size: 7px;
+
+    font-style: normal;
+}
+
+
+
+/* =========================================================
+   MEMO
+========================================================= */
+
+.memo-paper {
+    width: 260px;
+
+    padding: 25px;
+
+    background: #ded1ae;
+
+    box-shadow:
+        3px 6px 10px
+        rgba(50,37,27,.18);
+
+    font-family:
+        "Nanum Pen Script",
+        cursive;
+
+    font-size: 24px;
+
+    line-height: 1.5;
+
+    color: #4f463d;
+}
+
+
+
+/* =========================================================
+   NOTICE
+========================================================= */
+
+.old-notice {
+    width: 230px;
+
+    padding: 27px;
+
+    text-align: center;
+
+    background: #e1d5bc;
+
+    border:
+        1px solid #a99a82;
+
+    box-shadow:
+        4px 7px 10px
+        rgba(52,39,28,.18);
+}
+
+
+.old-notice h3 {
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size: 20px;
+}
+
+
+.old-notice p {
+    margin-top: 15px;
+
+    font-size: 10px;
+
+    line-height: 1.8;
+}
+
+
+.old-notice small {
+    display: block;
+
+    margin-top: 17px;
+
+    font-size: 7px;
+}
+
+
+.pin {
+    position: absolute;
+
+    left: 50%;
+    top: 8px;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #794a3e;
+}
+
+
+
+/* =========================================================
+   GRAFFITI
+========================================================= */
+
+#graffitiLayer {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 6;
+
+    pointer-events: none;
+}
+
+
+.random-graffiti {
+    position: absolute;
+
+    max-width: 360px;
+
+    white-space: pre-wrap;
+
+    user-select: none;
+
+    pointer-events: none;
+
+    font-family:
+        "Nanum Pen Script",
+        cursive;
+
+    line-height: 1.05;
+
+    letter-spacing: -1px;
+
+    color: #4e4943;
+
+    mix-blend-mode: multiply;
+}
+
+
+.random-graffiti.wine {
+    color: #75453f;
+}
+
+
+.random-graffiti.pencil {
+    color: #424748;
+}
+
+
+.random-graffiti.brown {
+    color: #705443;
+}
+
+
+.random-graffiti.blue {
+    color: #475665;
+}
+
+
+.graffiti-conversation {
+    position: absolute;
+
+    z-index: 9;
+
+    width: 320px;
+
+    color:
+        rgba(58,51,46,.78);
+
+    font-size: 24px;
+
+    line-height: 1.08;
+
+    user-select: none;
+
+    pointer-events: none;
+
+    mix-blend-mode: multiply;
+}
+
+
+.graffiti-conversation div {
+    margin: 4px 0;
+
+    white-space: pre-wrap;
+}
+
+
+.graffiti-conversation div:nth-child(even) {
+    font-size: 16px;
+
+    opacity: .55;
+}
+
+
+.wall-doodle {
+    position: absolute;
+
+    z-index: 8;
+
+    margin: 0;
+
+    color:
+        rgba(58,58,54,.40);
+
+    font-family: monospace;
+
+    font-size: 18px;
+
+    line-height: .9;
+
+    user-select: none;
+
+    pointer-events: none;
+
+    mix-blend-mode: multiply;
+}
+
+
+.heart-doodle {
+    position: absolute;
+
+    z-index: 8;
+
+    font-family:
+        "Nanum Pen Script",
+        cursive;
+
+    color:
+        rgba(113,64,57,.43);
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+
+
+/* =========================================================
+   MESSAGES
+========================================================= */
+
+.message {
+    position: absolute;
+
+    z-index: 15;
+
+    width: 330px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    font-size: 27px;
+
+    line-height: 1.5;
+
+    user-select: none;
+
+    color: #51473f;
+
+    transition:
+        transform .35s,
+        filter .35s;
+}
+
+
+.message:hover {
+    z-index: 500;
+
+    filter:
+        drop-shadow(
+            0 10px 8px
+            rgba(50,35,25,.17)
+        );
+}
+
+
+.message small {
+    display: block;
+
+    margin-top: 10px;
+
+    font-family: Arial;
+
+    font-size: 7px;
+
+    letter-spacing: 3px;
+
+    opacity: .35;
+}
+
+
+.message.diphy {
+    font-family:
+        "Diphylleia",
+        serif;
+}
+
+
+.message.dokdo {
+    font-family:
+        "East Sea Dokdo",
+        sans-serif;
+
+    color: #704940;
+}
+
+
+.message.pen {
+    font-family:
+        "Nanum Pen Script",
+        cursive;
+
+    color: #4d5353;
+}
+
+
+.message.large {
+    font-size: 39px;
+}
+
+
+.message.giant {
+    font-size: 60px;
+}
+
+
+.message.highlight {
+    z-index: 800;
+
+    filter:
+        drop-shadow(
+            0 13px 12px
+            rgba(61,42,29,.25)
+        );
+}
+
+
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+#bottomNav {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    width: 100%;
+    height: 58px;
+
+    padding: 0 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        rgba(245,238,228,.96);
+
+    border-top:
+        1px solid rgba(72,53,39,.13);
+
+    color: #716052;
+}
+
+
+.location-box {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.location-box span {
+    font-size: 7px;
+
+    letter-spacing: 2px;
+
+    opacity: .6;
+}
+
+
+.location-box strong {
+    font-family: Arial;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+}
+
+
+.drag-guide {
+    position: absolute;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 9px;
+
+    color: #978575;
+}
+
+
+.zoom-control {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.zoom-control button {
+    width: 30px;
+    height: 30px;
+
+    border:
+        1px solid #cdbba7;
+
+    background: transparent;
+
+    color: #5c4b40;
+}
+
+
+.zoom-control button:hover {
+    background: #382c25;
+
+    color: white;
+}
+
+
+#zoomText {
+    min-width: 40px;
+
+    text-align: center;
+
+    font-family: Arial;
+
+    font-size: 9px;
+}
+
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    overflow-y: auto;
+
+    background:
+        rgba(42,31,25,.75);
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+.modal.show {
+    display: flex;
+}
+
+
+.modal-card {
+    position: relative;
+
+    width: 510px;
+
+    max-width: 96%;
+
+    padding: 50px;
+
+    margin: auto;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f6eee2,
+            #eadcc8
+        );
+
+    box-shadow:
+        0 35px 100px
+        rgba(32,22,16,.35);
+}
+
+
+.close-modal {
+    position: absolute;
+
+    right: 22px;
+    top: 18px;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 25px;
+
+    color: #746255;
+}
+
+
+.modal-label {
+    display: block;
+
+    margin-bottom: 15px;
+
+    font-family: Arial;
+
+    font-size: 7px;
+
+    letter-spacing: 5px;
+
+    color: #a17a5d;
+}
+
+
+.modal-card h2 {
+    margin-bottom: 14px;
+
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size: 29px;
+
+    font-weight: normal;
+
+    line-height: 1.5;
+}
+
+
+.modal-card > p {
+    font-size: 11px;
+
+    line-height: 1.8;
+
+    color: #897568;
+}
+
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.write-card label {
+    display: block;
+
+    margin-top: 23px;
+    margin-bottom: 8px;
+
+    font-size: 10px;
+
+    color: #705e51;
+}
+
+
+.normal-input {
+    width: 100%;
+
+    padding: 13px 5px;
+
+    border: none;
+
+    border-bottom:
+        1px solid #baa995;
+
+    outline: none;
+
+    background: transparent;
+}
+
+
+#messageInput {
+    width: 100%;
+    height: 115px;
+
+    padding: 14px;
+
+    resize: none;
+
+    outline: none;
+
+    border:
+        1px solid #cbb9a4;
+
+    background:
+        rgba(255,255,255,.25);
+}
+
+
+.counter {
+    margin-top: 5px;
+
+    text-align: right;
+
+    font-size: 8px;
+
+    color: #9c8a7a;
+}
+
+
+
+/* =========================================================
+   FONT OPTIONS
+========================================================= */
+
+.font-options {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 7px;
+}
+
+
+.font-options input {
+    display: none;
+}
+
+
+.font-card {
+    min-height: 90px;
+
+    padding: 12px;
+
+    border:
+        1px solid #cdbba7;
+
+    display: flex !important;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    cursor: pointer;
+}
+
+
+.font-card small {
+    margin-top: 8px;
+
+    font-family: Arial;
+
+    font-size: 6px;
+
+    opacity: .5;
+}
+
+
+.diphy-preview {
+    font-family:
+        "Diphylleia",
+        serif;
+}
+
+
+.dokdo-preview {
+    font-family:
+        "East Sea Dokdo",
+        sans-serif;
+
+    font-size:
+        20px !important;
+}
+
+
+.pen-preview {
+    font-family:
+        "Nanum Pen Script",
+        cursive;
+
+    font-size:
+        20px !important;
+}
+
+
+.font-options input:checked + label {
+    background: #42342c;
+
+    border-color: #42342c;
+
+    color: white;
+}
+
+
+
+/* =========================================================
+   AI FONT
+========================================================= */
+
+#aiFontArea {
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 18px;
+
+    border:
+        1px dashed #b59e85;
+}
+
+
+#aiFontArea strong {
+    font-size: 11px;
+}
+
+
+#aiFontArea p {
+    margin-top: 5px;
+
+    font-size: 9px;
+
+    color: #8d7868;
+}
+
+
+#handwritingFile {
+    display: none;
+}
+
+
+.upload-button {
+    display:
+        inline-block !important;
+
+    margin-top:
+        12px !important;
+
+    padding: 8px 12px;
+
+    border:
+        1px solid #b29d87;
+
+    cursor: pointer;
+}
+
+
+#aiStatus {
+    margin-top: 10px;
+
+    font-size: 9px;
+
+    color: #80614c;
+}
+
+
+
+/* =========================================================
+   PREVIEW
+========================================================= */
+
+.preview {
+    margin-top: 20px;
+
+    padding: 18px;
+
+    background: #ddcdb4;
+}
+
+
+.preview > span {
+    font-family: Arial;
+
+    font-size: 6px;
+
+    letter-spacing: 3px;
+}
+
+
+#messagePreview {
+    min-height: 75px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px;
+
+    text-align: center;
+
+    white-space: pre-wrap;
+
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size: 20px;
+}
+
+
+
+/* =========================================================
+   DONATION
+========================================================= */
+
+.donation-box {
+    margin-top: 20px;
+
+    padding: 17px;
+
+    border:
+        1px solid #cbb9a4;
+}
+
+
+.donation-box > div {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.donation-box span {
+    font-size: 9px;
+}
+
+
+.donation-box strong {
+    font-family:
+        "Diphylleia",
+        serif;
+
+    font-size: 27px;
+
+    font-weight: normal;
+
+    color: #805244;
+}
+
+
+.donation-box p {
+    margin-top: 8px;
+
+    font-size: 9px;
+
+    color: #907d6e;
+
+    line-height: 1.6;
+}
+
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.primary-button {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 14px;
+
+    border: none;
+
+    background: #3c3029;
+
+    color: white;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+.primary-button:hover {
+    background: #745346;
+}
+
+
+.text-button {
+    margin-top: 18px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #6f5c50;
+}
+
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+#searchResult {
+    margin-top: 18px;
+
+    max-height: 200px;
+
+    overflow-y: auto;
+}
+
+
+.result-item {
+    padding: 12px 5px;
+
+    border-bottom:
+        1px solid rgba(80,60,45,.14);
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+
+
+/* =========================================================
+   COMPLETE
+========================================================= */
+
+.complete-card {
+    text-align: center;
+}
+
+
+.big-heart {
+    margin-bottom: 20px;
+
+    font-size: 55px;
+
+    color: #94634f;
+}
+
+
+.coordinate-box {
+    margin-top: 25px;
+
+    padding: 23px;
+
+    border:
+        1px solid #c3af99;
+}
+
+
+.coordinate-box span {
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-family: Arial;
+
+    font-size: 7px;
+
+    letter-spacing: 3px;
+}
+
+
+.coordinate-box strong {
+    font-family: Arial;
+
+    font-size: 25px;
+
+    letter-spacing: 5px;
+}
+
+
+
+/* =========================================================
+   AD MODAL
+========================================================= */
+
+.ad-modal-card {
+    text-align: center;
+}
+
+
+#adModalIcon {
+    margin: 15px;
+
+    font-size: 50px;
+}
+
+
+.ad-support {
+    margin-top: 25px;
+
+    padding: 15px;
+
+    background:
+        rgba(125,90,63,.07);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+
+    color: #887366;
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 0 12px;
+    }
+
+
+    .heart-status {
+        display: none;
+    }
+
+
+    .header-buttons button span {
+        display: none;
+    }
+
+
+    .header-buttons button {
+        width: 36px;
+
+        padding: 0;
+    }
+
+
+    #bottomNav {
+        padding: 0 12px;
+    }
+
+
+    .drag-guide {
+        display: none;
+    }
+
+
+    .modal-card {
+        padding: 42px 23px;
+    }
+
+
+    .font-options {
+        grid-template-columns: 1fr;
+    }
+
+
+    .memory-copy {
+        left: 7%;
+
+        max-width: 86%;
+    }
+
+
+    .memory-copy h1 {
+        font-size: 34px;
+    }
+
+
+    .memory-copy-center {
+        left: 50%;
+
+        max-width: 88%;
+    }
+
+
+    .memory-copy-bottom {
+        left: 7%;
+    }
+
+
+    .cam-date {
+        left: 20px;
+        bottom: 25px;
+    }
+
+
+    .cam-rec {
+        left: 20px;
+        top: 20px;
+    }
+
+
+    .cam-battery {
+        right: 20px;
+        top: 20px;
+    }
+
+
+    #skipMemory {
+        right: 20px;
+        bottom: 25px;
+    }
+
+
+    .intro-content h1 {
+        font-size: 42px;
+
+        letter-spacing: -2px;
+    }
+
+}

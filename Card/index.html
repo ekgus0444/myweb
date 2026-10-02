@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>마음벽 | Wall of Hearts</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Diphylleia&family=East+Sea+Dokdo&family=Gowun+Dodum&family=Nanum+Pen+Script&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="style.css">
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     1. CINEMATIC VIDEO INTRO
+================================================== -->
+
+<section id="memoryIntro">
+
+    <!-- 사진들 -->
+
+    <div class="memory-scene active"
+         data-scene="0">
+
+        <img src="images/intro_01.jpg"
+             alt="옛날 떡볶이집">
+
+    </div>
+
+
+    <div class="memory-scene"
+         data-scene="1">
+
+        <img src="images/intro_02.jpg"
+             alt="친구들과 떡볶이를 먹던 기억">
+
+    </div>
+
+
+    <div class="memory-scene"
+         data-scene="2">
+
+        <img src="images/intro_03.jpg"
+             alt="벽에 낙서를 남기는 모습">
+
+    </div>
+
+
+    <div class="memory-scene"
+         data-scene="3">
+
+        <img src="images/intro_04.jpg"
+             alt="벽에 남겨진 낙서">
+
+    </div>
+
+
+    <div class="memory-scene"
+         data-scene="4">
+
+        <img src="images/intro_05.jpg"
+             alt="오래된 낙서벽">
+
+    </div>
+
+
+    <!-- 어두운 영화 필터 -->
+
+    <div class="memory-dark"></div>
+
+
+    <!-- VHS 노이즈 -->
+
+    <div class="vhs-noise"></div>
+
+    <div class="vhs-lines"></div>
+
+    <div class="vhs-flash"></div>
+
+
+    <!-- REC -->
+
+    <div class="cam-rec">
+
+        <span class="rec-dot"></span>
+
+        REC
+
+    </div>
+
+
+    <!-- 날짜 -->
+
+    <div class="cam-date">
+
+        <span id="camDate">
+            2004. 10. 16
+        </span>
+
+        <span id="camTime">
+            PM 05:41
+        </span>
+
+    </div>
+
+
+    <!-- 카메라 배터리 -->
+
+    <div class="cam-battery">
+
+        <div class="battery-body">
+
+            <i></i>
+            <i></i>
+            <i></i>
+
+        </div>
+
+        <span></span>
+
+    </div>
+
+
+    <!-- 첫 문구 -->
+
+    <div class="memory-copy"
+         id="memoryCopy1">
+
+        <span>
+            우리의 마음이 아직 작았던 시절,
+        </span>
+
+        <h1>
+            우리는 벽에<br>
+            마음을 남기곤 했습니다.
+        </h1>
+
+    </div>
+
+
+    <!-- 두 번째 문구 -->
+
+    <div class="memory-copy memory-copy-center"
+         id="memoryCopy2">
+
+        <p>
+            맛있는 걸 먹고,
+        </p>
+
+        <h1>
+            좋아하는 사람의<br>
+            이름을 적고,
+        </h1>
+
+        <small>
+            별것 아닌 하루를 오래 기억하고 싶었습니다.
+        </small>
+
+    </div>
+
+
+    <!-- 세 번째 -->
+
+    <div class="memory-copy memory-copy-bottom"
+         id="memoryCopy3">
+
+        <p>
+            그날 우리가 남긴 한마디
+        </p>
+
+        <h1>
+            “우리 나중에도<br>
+            여기 오자.”
+        </h1>
+
+    </div>
+
+
+    <!-- 마지막 문구 -->
+
+    <div id="memoryEnding">
+
+        <p>
+            그리고 시간이 흘렀습니다.
+        </p>
+
+        <h1>
+            그 마음들은,<br>
+            어디로 갔을까요.
+        </h1>
+
+    </div>
+
+
+    <!-- SKIP -->
+
+    <button id="skipMemory">
+        SKIP
+        <span>→</span>
+    </button>
+
+
+    <!-- 진행바 -->
+
+    <div id="memoryProgress">
+
+        <div id="memoryProgressBar"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     2. ORIGINAL EMOTIONAL INTRO
+================================================== -->
+
+<section id="intro">
+
+    <div class="intro-shadow"></div>
+
+
+    <div class="intro-graffiti ig1">
+        민지 ♡ 현우
+    </div>
+
+    <div class="intro-graffiti ig2">
+        여기 진짜 맛있음ㅋㅋ
+    </div>
+
+    <div class="intro-graffiti ig3">
+        2019.03.02
+    </div>
+
+    <div class="intro-graffiti ig4">
+        또 왔다감
+    </div>
+
+    <div class="intro-graffiti ig5">
+        보고싶다.
+    </div>
+
+    <div class="intro-graffiti ig6">
+        J + S
+    </div>
+
+    <div class="intro-graffiti ig7">
+        다 잘될거야
+    </div>
+
+    <div class="intro-graffiti ig8">
+        ★★★★★
+    </div>
+
+
+    <div class="intro-content">
+
+        <span class="intro-small">
+            WALL OF HEARTS
+        </span>
+
+        <p class="intro-sub">
+            시간이 쌓이는 벽
+        </p>
+
+
+        <h1>
+
+            마음은 사라져도,<br>
+
+            <em>
+                흔적은 남으니까.
+            </em>
+
+        </h1>
+
+
+        <p class="intro-description">
+
+            누군가는 사랑을 적었고,<br>
+
+            누군가는 그리움을 남겼습니다.
+
+            <br><br>
+
+            당신의 이야기도<br>
+
+            이 오래된 벽 한편에 남겨보세요.
+
+        </p>
+
+
+        <button id="enterBtn">
+
+            오래된 벽으로 들어가기
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+        <p class="intro-donation">
+
+            마음 하나 100원 ·
+            아이들을 위한 마음으로 이어집니다.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     3. MAIN
+================================================== -->
+
+<main id="mainPage">
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header>
+
+    <div class="logo-area">
+
+        <div class="logo-heart">
+            ♡
+        </div>
+
+        <div>
+
+            <h2>
+                마음벽
+            </h2>
+
+            <span>
+                WALL OF HEARTS
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="heart-status">
+
+        <i></i>
+
+        <span id="heartCount">
+            마음들이 머무는 중
+        </span>
+
+    </div>
+
+
+    <div class="header-buttons">
+
+        <button id="homeBtn">
+
+            ◎
+
+            <span>
+                중앙으로
+            </span>
+
+        </button>
+
+
+        <button id="searchBtn">
+
+            ⌕
+
+            <span>
+                마음 찾기
+            </span>
+
+        </button>
+
+
+        <button id="writeBtn"
+                class="write-btn">
+
+            ✎
+
+            <span>
+                마음 남기기
+            </span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- ==================================================
+     WALL
+================================================== -->
+
+<section id="wallViewport">
+
+
+<div id="wall">
+
+
+<!-- 얼룩 -->
+
+<div class="wall-stain stain1"></div>
+<div class="wall-stain stain2"></div>
+<div class="wall-stain stain3"></div>
+<div class="wall-stain stain4"></div>
+<div class="wall-stain stain5"></div>
+
+
+
+<!-- 중앙 -->
+
+<div id="wallCenter">
+
+    <span>
+        THE WALL
+    </span>
+
+    <h2>
+        천천히 둘러보세요.
+    </h2>
+
+    <p>
+        누군가의 마음이 벽 어딘가에 남아 있습니다.
+    </p>
+
+    <small>
+        벽을 잡고 상하좌우로 움직여보세요
+    </small>
+
+</div>
+
+
+
+<!-- ==================================================
+     MENU BOARD
+================================================== -->
+
+<div class="wall-object menu-board"
+     style="
+     left:4450px;
+     top:1550px;
+     transform:rotate(-2deg);
+     ">
+
+    <div class="tape tape-left"></div>
+
+    <div class="tape tape-right"></div>
+
+
+    <span class="object-small">
+        SINCE 1987
+    </span>
+
+
+    <h3>
+        오 늘 의 메 뉴
+    </h3>
+
+
+    <div class="menu-line">
+
+        <span>
+            김치찌개
+        </span>
+
+        <b>
+            8,000
+        </b>
+
+    </div>
+
+
+    <div class="menu-line">
+
+        <span>
+            제육볶음
+        </span>
+
+        <b>
+            9,000
+        </b>
+
+    </div>
+
+
+    <div class="menu-line">
+
+        <span>
+            계란말이
+        </span>
+
+        <b>
+            7,000
+        </b>
+
+    </div>
+
+
+    <div class="menu-line">
+
+        <span>
+            공기밥
+        </span>
+
+        <b>
+            1,000
+        </b>
+
+    </div>
+
+
+    <small class="menu-note">
+        맛있게 드세요 :)
+    </small>
+
+</div>
+
+
+
+<!-- ==================================================
+     SOJU AD
+================================================== -->
+
+<div class="wall-object ad-object soju-ad"
+     data-ad="soju"
+     style="
+     left:5600px;
+     top:1000px;
+     transform:rotate(2deg);
+     ">
+
+
+    <div class="ad-label">
+        광고 · SPONSORED
+    </div>
+
+
+    <span class="soju-copy">
+        오늘 하루도
+    </span>
+
+
+    <h2>
+        수고했어요.
+    </h2>
+
+
+    <p>
+
+        좋은 사람들과<br>
+
+        좋은 시간을.
+
+    </p>
+
+
+    <div class="bottle">
+
+        <div class="bottle-neck"></div>
+
+        <div class="bottle-label">
+
+            오늘<br>
+
+            한잔
+
+        </div>
+
+    </div>
+
+
+    <strong>
+        오늘한잔
+    </strong>
+
+
+    <small>
+        BRAND PARTNER
+    </small>
+
+</div>
+
+
+
+<!-- ==================================================
+     RESTAURANT AD
+================================================== -->
+
+<div class="wall-object ad-object restaurant-ad"
+     data-ad="restaurant"
+     style="
+     left:7100px;
+     top:2700px;
+     transform:rotate(-3deg);
+     ">
+
+
+    <div class="ad-label">
+        광고 · SPONSORED
+    </div>
+
+
+    <p class="restaurant-small">
+        오늘 뭐 먹지?
+    </p>
+
+
+    <h2>
+
+        불향가득<br>
+
+        돼지구이
+
+    </h2>
+
+
+    <div class="food-circle">
+
+        오늘의<br>
+
+        추천
+
+    </div>
+
+
+    <strong>
+        골목식당
+    </strong>
+
+
+    <span>
+        브랜드 이야기 →
+    </span>
+
+</div>
+
+
+
+<!-- ==================================================
+     RECEIPT AD
+================================================== -->
+
+<div class="wall-object ad-object receipt-ad"
+     data-ad="coffee"
+     style="
+     left:3000px;
+     top:3350px;
+     transform:rotate(4deg);
+     ">
+
+
+    <div class="ad-label">
+        광고
+    </div>
+
+
+    <div class="receipt-title">
+        RECEIPT
+    </div>
+
+
+    <p>
+        2026 / 10 / 02
+    </p>
+
+
+    <hr>
+
+
+    <div class="receipt-row">
+
+        <span>
+            아메리카노
+        </span>
+
+        <span>
+            4,500
+        </span>
+
+    </div>
+
+
+    <div class="receipt-row">
+
+        <span>
+            카페라떼
+        </span>
+
+        <span>
+            5,000
+        </span>
+
+    </div>
+
+
+    <hr>
+
+
+    <strong>
+        TOTAL 9,500
+    </strong>
+
+
+    <p class="receipt-brand">
+        하루커피
+    </p>
+
+
+    <small>
+        Sponsored
+    </small>
+
+</div>
+
+
+
+<!-- WIFI -->
+
+<div class="wall-object wifi-paper"
+     style="
+     left:3650px;
+     top:1150px;
+     transform:rotate(5deg);
+     ">
+
+    <span>
+        Wi-Fi
+    </span>
+
+    <strong>
+        마음식당
+    </strong>
+
+    <p>
+        PW : 10041004
+    </p>
+
+</div>
+
+
+
+<!-- 원산지 -->
+
+<div class="wall-object origin-paper"
+     style="
+     left:7650px;
+     top:1250px;
+     transform:rotate(-2deg);
+     ">
+
+    <h3>
+        원산지 표시
+    </h3>
+
+    <p>
+        돼지고기 · 국내산
+    </p>
+
+    <p>
+        쌀 · 국내산
+    </p>
+
+    <p>
+        배추김치 · 국내산
+    </p>
+
+</div>
+
+
+
+<!-- 달력 -->
+
+<div class="wall-object calendar"
+     style="
+     left:2050px;
+     top:1450px;
+     transform:rotate(-4deg);
+     ">
+
+    <div class="calendar-top">
+        2026
+    </div>
+
+    <strong>
+        10
+    </strong>
+
+    <span>
+        OCTOBER
+    </span>
+
+
+    <div class="calendar-grid">
+
+        <i>1</i>
+        <i>2</i>
+        <i>3</i>
+        <i>4</i>
+        <i>5</i>
+        <i>6</i>
+        <i>7</i>
+
+        <i>8</i>
+        <i>9</i>
+        <i>10</i>
+        <i>11</i>
+        <i>12</i>
+        <i>13</i>
+        <i>14</i>
+
+        <i>15</i>
+        <i>16</i>
+        <i>17</i>
+        <i>18</i>
+        <i>19</i>
+        <i>20</i>
+        <i>21</i>
+
+        <i>22</i>
+        <i>23</i>
+        <i>24</i>
+        <i>25</i>
+        <i>26</i>
+        <i>27</i>
+        <i>28</i>
+
+    </div>
+
+</div>
+
+
+
+<!-- MEMO -->
+
+<div class="wall-object memo-paper"
+     style="
+     left:8250px;
+     top:3500px;
+     transform:rotate(6deg);
+     ">
+
+    오늘 재료 소진으로<br>
+
+    조금 일찍 문 닫습니다.
+
+    <br><br>
+
+    <b>
+        - 사장 -
+    </b>
+
+</div>
+
+
+
+<!-- OLD NOTICE -->
+
+<div class="wall-object old-notice"
+     style="
+     left:1150px;
+     top:2850px;
+     transform:rotate(-3deg);
+     ">
+
+
+    <div class="pin"></div>
+
+
+    <h3>
+        부탁드립니다
+    </h3>
+
+
+    <p>
+
+        벽에 남겨진 마음은<br>
+
+        지우지 말아주세요.
+
+    </p>
+
+
+    <small>
+        1998. 04.
+    </small>
+
+</div>
+
+
+
+<!-- ==================================================
+     SPECIAL MESSAGES
+================================================== -->
+
+<div class="message dokdo large"
+     data-name="엄마"
+     data-coordinate="E-4821"
+     data-rotation="-5"
+     style="
+     left:4700px;
+     top:2100px;
+     transform:rotate(-5deg);
+     ">
+
+    엄마,<br>
+
+    사랑한다고<br>
+
+    자주 말할걸.
+
+    <small>
+        #E-4821
+    </small>
+
+</div>
+
+
+
+<div class="message pen giant"
+     data-name="지현"
+     data-coordinate="D-8214"
+     data-rotation="-7"
+     style="
+     left:3900px;
+     top:2850px;
+     transform:rotate(-7deg);
+     ">
+
+    보고싶다.
+
+    <small>
+        #D-8214
+    </small>
+
+</div>
+
+
+
+<div class="message diphy"
+     data-name="민지"
+     data-coordinate="F-1932"
+     data-rotation="3"
+     style="
+     left:5350px;
+     top:3200px;
+     transform:rotate(3deg);
+     ">
+
+    민지야,<br>
+
+    우리 할머니가 되어서도<br>
+
+    지금처럼 웃자.
+
+    <small>
+        #F-1932
+    </small>
+
+</div>
+
+
+
+<div class="message dokdo"
+     data-name="아빠"
+     data-coordinate="G-2301"
+     data-rotation="4"
+     style="
+     left:6500px;
+     top:1900px;
+     transform:rotate(4deg);
+     ">
+
+    그때는 몰랐어요.<br>
+
+    아빠도 처음이었다는 걸.
+
+    <small>
+        #G-2301
+    </small>
+
+</div>
+
+
+
+<div class="message pen large"
+     data-name="말랑이"
+     data-coordinate="G-0214"
+     data-rotation="-4"
+     style="
+     left:6650px;
+     top:3850px;
+     transform:rotate(-4deg);
+     ">
+
+    세상에 와줘서<br>
+
+    정말 고마워 ♡
+
+    <small>
+        #G-0214
+    </small>
+
+</div>
+
+
+
+<!-- 자동 낙서 -->
+
+<div id="graffitiLayer"></div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+     BOTTOM NAV
+================================================== -->
+
+<div id="bottomNav">
+
+
+    <div class="location-box">
+
+        <span>
+            CURRENT WALL
+        </span>
+
+        <strong id="positionText">
+            E-5
+        </strong>
+
+    </div>
+
+
+    <div class="drag-guide">
+
+        ✥ &nbsp;
+
+        벽을 잡고 상하좌우로 움직여보세요
+
+    </div>
+
+
+    <div class="zoom-control">
+
+        <button id="zoomOut">
+            −
+        </button>
+
+        <span id="zoomText">
+            100%
+        </span>
+
+        <button id="zoomIn">
+            +
+        </button>
+
+    </div>
+
+</div>
+
+
+</main>
+
+
+
+<!-- ==================================================
+     SEARCH MODAL
+================================================== -->
+
+<div class="modal"
+     id="searchModal">
+
+
+    <div class="modal-card">
+
+
+        <button class="close-modal">
+            ×
+        </button>
+
+
+        <span class="modal-label">
+            FIND A HEART
+        </span>
+
+
+        <h2>
+
+            이 오래된 벽 어딘가에<br>
+
+            당신을 위한 마음이 있을지도 몰라요.
+
+        </h2>
+
+
+        <p>
+            이름, 별명 또는 벽 좌표를 입력해주세요.
+        </p>
+
+
+        <input
+            class="normal-input"
+            id="searchInput"
+            placeholder="예 : 민지 / E-4821">
+
+
+        <button
+            id="findBtn"
+            class="primary-button">
+
+            벽에서 찾아보기
+
+        </button>
+
+
+        <div id="searchResult"></div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     WRITE MODAL
+================================================== -->
+
+<div class="modal"
+     id="writeModal">
+
+
+    <div class="modal-card write-card">
+
+
+        <button class="close-modal">
+            ×
+        </button>
+
+
+        <span class="modal-label">
+            LEAVE YOUR HEART
+        </span>
+
+
+        <h2>
+
+            마음 하나를<br>
+
+            이 벽에 남겨보세요.
+
+        </h2>
+
+
+        <label>
+            누구에게 남길까요?
+        </label>
+
+
+        <input
+            class="normal-input"
+            id="receiver"
+            maxlength="20"
+            placeholder="이름 또는 별명">
+
+
+        <label>
+            전하고 싶은 마음
+        </label>
+
+
+        <textarea
+            id="messageInput"
+            maxlength="120"
+            placeholder="하지 못했던 말을 적어주세요."></textarea>
+
+
+        <div class="counter">
+
+            <span id="charCount">
+                0
+            </span>
+
+            / 120
+
+        </div>
+
+
+
+        <label>
+            글씨체
+        </label>
+
+
+        <div class="font-options">
+
+
+            <input
+                type="radio"
+                name="font"
+                id="diphy"
+                value="diphy"
+                checked>
+
+
+            <label
+                for="diphy"
+                class="font-card diphy-preview">
+
+                마음을 전합니다.
+
+                <small>
+                    Diphylleia
+                </small>
+
+            </label>
+
+
+
+            <input
+                type="radio"
+                name="font"
+                id="dokdo"
+                value="dokdo">
+
+
+            <label
+                for="dokdo"
+                class="font-card dokdo-preview">
+
+                마음을 전합니다.
+
+                <small>
+                    Dokdo
+                </small>
+
+            </label>
+
+
+
+            <input
+                type="radio"
+                name="font"
+                id="myFont"
+                value="myFont">
+
+
+            <label
+                for="myFont"
+                class="font-card pen-preview">
+
+                나의 손글씨
+
+                <small>
+                    AI HANDWRITING
+                </small>
+
+            </label>
+
+
+        </div>
+
+
+
+        <!-- AI FONT -->
+
+        <div id="aiFontArea">
+
+            <strong>
+                ✦ 나의 손글씨 만들기
+            </strong>
+
+            <p>
+                직접 작성한 손글씨 사진을 올려주세요.
+            </p>
+
+
+            <label
+                for="handwritingFile"
+                class="upload-button">
+
+                손글씨 사진 선택
+
+            </label>
+
+
+            <input
+                type="file"
+                id="handwritingFile"
+                accept="image/*">
+
+
+            <div id="aiStatus"></div>
+
+        </div>
+
+
+
+        <!-- PREVIEW -->
+
+        <div class="preview">
+
+            <span>
+                PREVIEW
+            </span>
+
+            <div id="messagePreview">
+
+                당신의 마음이 이곳에 보여집니다.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DONATION -->
+
+        <div class="donation-box">
+
+            <div>
+
+                <span>
+                    마음 하나
+                </span>
+
+                <strong>
+                    100원
+                </strong>
+
+            </div>
+
+
+            <p>
+
+                이 마음은 질병으로 어려움을 겪는
+                아이들을 위한 도움으로 이어집니다.
+
+            </p>
+
+        </div>
+
+
+        <button
+            id="submitMessage"
+            class="primary-button">
+
+            마음 남기기
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     COMPLETE MODAL
+================================================== -->
+
+<div class="modal"
+     id="completeModal">
+
+
+    <div class="modal-card complete-card">
+
+
+        <div class="big-heart">
+            ♡
+        </div>
+
+
+        <span class="modal-label">
+            YOUR HEART IS HERE
+        </span>
+
+
+        <h2>
+
+            당신의 마음이<br>
+
+            벽에 남겨졌습니다.
+
+        </h2>
+
+
+        <p>
+            이 좌표를 기억해두세요.
+        </p>
+
+
+        <div class="coordinate-box">
+
+            <span>
+                WALL COORDINATE
+            </span>
+
+            <strong id="newCoordinate">
+                #E-0000
+            </strong>
+
+        </div>
+
+
+        <button
+            id="copyCoordinate"
+            class="primary-button">
+
+            좌표 복사
+
+        </button>
+
+
+        <button
+            id="goWall"
+            class="text-button">
+
+            내 마음 보러가기 →
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     AD MODAL
+================================================== -->
+
+<div class="modal"
+     id="adModal">
+
+
+    <div class="modal-card ad-modal-card">
+
+
+        <button class="close-modal">
+            ×
+        </button>
+
+
+        <span class="modal-label">
+            SPONSORED
+        </span>
+
+
+        <div id="adModalIcon">
+            ♡
+        </div>
+
+
+        <h2 id="adModalTitle">
+            브랜드
+        </h2>
+
+
+        <p id="adModalDescription">
+            브랜드 소개
+        </p>
+
+
+        <div class="ad-support">
+
+            이 광고는 마음벽을 운영하고<br>
+
+            아이들을 돕는 활동에 힘을 보탭니다.
+
+        </div>
+
+
+        <button
+            id="adVisitBtn"
+            class="primary-button">
+
+            브랜드 이야기 보기 →
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

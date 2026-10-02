@@ -1,145 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+
 <head>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>오늘의 과제</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: #f5f5f5;
+
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .buttons a {
+            width: 160px;
+            padding: 25px 20px;
+
+            background-color: white;
+
+            border: 1px solid #ccc;
+            border-radius: 10px;
+
+            text-decoration: none;
+            color: #333;
+
+            font-size: 18px;
+
+            transition: 0.2s;
+        }
+
+        .buttons a:hover {
+            background-color: #333;
+            color: white;
+
+            transform: translateY(-5px);
+        }
+    </style>
 </head>
+
+
 <body>
-	<!-- 상단 헤더  -->
-	<header>
-		<div class="box">
-			<div id="logo">
-				<img src="./img/logo.png">
-			</div> <!-- logo -->
-			<nav id="menu">
-				<ul id="top_menu"></ul>
-				<li>로그인</li><li>|</li>
-				<li>회원가입</li>
-                <li><a href="image.html">산출물</a></li>
-				</ul>
-				
-			</nav> <!-- menu -->
-		</div> <!-- box -->
-	</header>
 
-	<!-- 메인 이미지 -->
-	<section id="main_image">
-		<a href="#"><img src="./img/btn_class.png"></a>
-	</section> <!-- main_image -->
+    <div class="container">
 
-	<!-- 사이드바와 메인 섹션 -->
-	<div class="box">
-        <ul id="main_menu">
-				<li>공연/콘서트</li>
-				<li>스포츠</li>
-				<li>액티비티/체혐</li>
-				<li>항공</li>
-                <li>숙박</li>
-                <li>음식</li>
-		</ul>
-		
+        <h1>오늘의 과제</h1>
 
-		<!-- 메인 섹션 -->
-		<section id="main">
-			<div id="main2">					
-				<h3 class="title1">공연/콘서트</h3>
-				<ul class="item1">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-				<ul class="item2">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-				<ul class="item1">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-				<ul class="item2">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-                	<h3 class="title1">항공</h3>
-				<ul class="item1">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-				<ul class="item2">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-				<ul class="item1">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-				<ul class="item2">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-			</div> <!-- main2 -->     
+        <div class="buttons">
 
-			<div id="main2">					
-				<h3 class="title1">스포츠</h3>
-				<ul class="item1">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-				<ul class="item2">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-				<ul class="item1">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-				<ul class="item2">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-            <div id="main2">					
-				<h3 class="title1">액티비티/체험</h3>
-				<ul class="item1">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-				<ul class="item2">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-				<ul class="item1">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-				<ul class="item2">
-					<li><img src=""></li>
-					<li class="subject"></li>
-					<li class="date"></li>
-				</ul>
-			</div> <!-- main2 -->   
-            
-			</div> <!-- main2 -->   
-		</section> <!-- main -->
-	</div> <!-- box -->
-    
-	
-	<footer>
-		
-	</footer>
+            <a href="./Card/index.html">
+                과제 1
+            </a>
+
+            <a href="./task2/index.html">
+                과제 2
+            </a>
+
+            <a href="./task3/index.html">
+                과제 3
+            </a>
+
+        </div>
+
+    </div>
+
 </body>
+
 </html>
